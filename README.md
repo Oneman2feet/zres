@@ -1,1 +1,2 @@
-# Zachary T. Zimmerman's LaTeX Resume
+# Zachary T. Zimmerman's Resume
+## And Custom LaTeX Class
