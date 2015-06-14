@@ -8,39 +8,79 @@
 \ProvidesClass{zres}[2015/06/13 Zachary Zimmerman's Resume Class]
 \LoadClass{article}
 
-% load external packages
+% Load external packages
 \RequirePackage{titlesec}
+\RequirePackage{xcolor}
+\RequirePackage{ragged2e}
 
-% Set font to Maven Pro
+% Set main font
 \usepackage{fontspec}
 \setmainfont{Maven Pro}
 
-% set page margins
-\usepackage[top=0.5in, bottom=0.5in, left=0.5in, right=0.5in]{geometry}
+% Define font weights of Maven Pro
+\newfontfamily{\mavenblack}[UprightFont={* Black}]{Maven Pro}
+\newfontfamily{\mavenbold}[UprightFont={* Bold}]{Maven Pro}
+\newfontfamily{\mavenmedium}[UprightFont={* Medium}]{Maven Pro}
+\newfontfamily{\mavenregular}[UprightFont={* Regular}]{Maven Pro}
 
-% define environments
-\newenvironment{resume}
-{Hello}
-{Bye}
+% Set page margins
+\usepackage[top=0.3in, bottom=0.5in, left=0.3in, right=0.3in]{geometry}
 
-% redefine \section and \subsection
-\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titleformat{\subsection}{\large\scshape\raggedright}{}{0em}{}
+% Remove page numbering
+\pagenumbering{gobble}
 
-% define new commands
-\newcommand{\datedsection}[2]{
-	\section[#1]{#1 \hfill #2}
-}
+% Layout variables
+\newlength{\side}
+\setlength{\side}{0.225\textwidth}
+\newlength{\gutter}
+\setlength{\gutter}{0.025\textwidth}
+\newlength{\main}
+\setlength{\main}{0.75\textwidth}
+\newlength{\baseline}
+\setlength{\baseline}{16pt}
 
-\newcommand{\datedsubsection}[2]{
-	\subsection[#1]{#1 \hfill #2}
-}
+% Color variables
+\definecolor{gray}{HTML}{9A9BAC}
+\definecolor{carnelian}{HTML}{CC3F3F}
 
+% Name styling
 \newcommand{\name}[1]{
-	\centerline{\Huge{#1}}
+  {\Huge\mavenblack #1}\\[2pt]
 }
 
-\newcommand{\contact}[5]{
-	#1 {\large\textperiodcentered} #2 {\large\textperiodcentered} #3
-	{\Large} #4 \ {\Large} #5
+% Contact info styling
+\newcommand{\contact}[3]{
+  {\large\mavenregular\color{gray} #1 \textbullet\  #2 \textbullet\  #3}\vspace{0.6em}
 }
+
+% Header layout
+\newenvironment{header}
+{\hfill\begin{minipage}[t]{\main}\raggedright}
+{\end{minipage}}
+
+% Sidebar layout
+\newenvironment{sidebar}
+{\begin{minipage}[t]{\side}\raggedright}
+{\end{minipage}\hspace{\gutter}}
+
+% Main content layout
+\newenvironment{resume}
+{\begin{minipage}[t]{\main}}
+{\end{minipage}}
+
+% Redefine \section and define \accomplishment, \semester, \details
+\titleformat{\section}{\Large\mavenmedium\color{carnelian}\raggedright}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{0.8em}{0.8em}
+
+\titleformat{\subsection}{\large\scshape\raggedright}{}{0em}{}
+\titlespacing*{\subsection}{0pt}{0.8em}{0.4em}
+
+\newcommand{\accomplishment}[2]{\subsection[#1]{\mavenregular{\large#1 \hfill \small#2}}}
+\newcommand{\semester}[2]{\mavenregular{\normalsize#1 \hfill \small#2}}
+\newcommand{\details}[2]{\vspace{-0.2em}\textcolor{gray}{{\mavenmedium#1 \hfill \small#2}}\\[-5pt]}
+
+% Define \infosection, \infosubsection, and \infolist, as well as \fulljustify
+\newcommand{\infosection}[1]{\vspace{0.8em}\raggedright{\large\mavenblack\textcolor{carnelian}{#1}}\justify}
+\newcommand{\infosubsection}[1]{\vspace{0.6em}\raggedright{\large\mavenmedium\textcolor{gray}{#1}}\justify}
+\newenvironment{infolist}{\justify\vspace{-0.2em}}{\vspace{0.4em}}
+\newcommand{\fulljustify}{{\parfillskip0pt\par}}
