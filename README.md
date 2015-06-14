@@ -1,2 +1,1 @@
-# zres
-Zachary T. Zimmerman's Resume LaTeX Class
+# Zachary T. Zimmerman's Resume LaTeX Class
