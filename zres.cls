@@ -75,7 +75,10 @@
 \titleformat{\subsection}{\large\scshape\raggedright}{}{0em}{}
 \titlespacing*{\subsection}{0pt}{0.8em}{0.4em}
 
-\newcommand{\accomplishment}[2]{\subsection[#1]{\mavenregular{\large#1 \hfill \small#2}}}
+\newcommand{\accomplishment}[3]{
+  \subsection[#1]{\mavenregular{\large#1 \hspace{0.4em} {\textcolor{gray}{\small\mavenmedium#2}} \hfill \small#3}}
+}
+
 \newcommand{\semester}[2]{\mavenregular{\normalsize#1 \hfill \small#2}}
 \newcommand{\details}[2]{\vspace{-0.2em}\textcolor{gray}{{\mavenmedium#1 \hfill \small#2}}\\[-5pt]}
 
