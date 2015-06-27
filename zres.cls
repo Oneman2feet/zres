@@ -83,7 +83,7 @@
 \newcommand{\details}[2]{\vspace{-0.2em}\textcolor{gray}{{\mavenmedium#1 \hfill \small#2}}\\[-5pt]}
 
 % Define \infosection, \infosubsection, and \infolist, as well as \fulljustify
-\newcommand{\infosection}[1]{\vspace{0.8em}\raggedright{\large\mavenblack\textcolor{carnelian}{#1}}\justify}
+\newcommand{\infosection}[1]{\vspace{0.5em}\raggedright{\large\mavenblack\textcolor{carnelian}{#1}}\justify}
 \newcommand{\infosubsection}[1]{\vspace{0.6em}\raggedright{\large\mavenmedium\textcolor{gray}{#1}}\justify}
 \newenvironment{infolist}{\justify\vspace{-0.2em}}{\vspace{0.4em}}
 \newcommand{\fulljustify}{{\parfillskip0pt\par}}
